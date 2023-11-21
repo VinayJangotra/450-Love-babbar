@@ -1,0 +1,9 @@
+https://practice.geeksforgeeks.org/problems/max-min/1
+class Solution
+{ 
+    public static int findSum(int A[],int N) 
+    {
+        Arrays.sort(A);
+        return A[N-1]+A[0];
+    }
+}
