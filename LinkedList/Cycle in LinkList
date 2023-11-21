@@ -1,0 +1,24 @@
+https://practice.geeksforgeeks.org/problems/detect-loop-in-linked-list/1
+// we solve this problem with the help of the two pointer approach
+class Solution {
+    //Function to check if the linked list has a loop.
+    public static boolean detectLoop(Node head){
+        Node slow=head;
+        Node fast=head;
+        while(fast !=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast)return true;
+        }
+        return false;
+    }
+}
+APPROACH 
+/* here in this problem we take the slow pointer and the fast pointer
+we will take slow pointer and fast pointer if their is a cycle the two 
+pointer will meet each other and if not the fast pointer terminates the 
+loop and return false 
+-> if the their exist the loop their exist a loop the fast pointer never terminates 
+and their exist a point when the slow pointer is equal to the fast pointer,hence we 
+return true;
+*/
