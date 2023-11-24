@@ -1,0 +1,21 @@
+https://practice.geeksforgeeks.org/problems/find-the-first-node-of-loop-in-linked-list--170645/1?utm_source
+class GfG
+{
+    //Function to remove duplicates from sorted linked list.
+    Node removeDuplicates(Node head)
+    {
+	 Node curr=head;
+	 Node temp=head.next;
+	 while(temp!=null){
+	     if(curr.data==temp.data){
+	         curr.next=temp.next;
+	         temp=curr.next;
+	     }
+	     else{
+	         curr=curr.next;
+	         temp=temp.next;
+	     }
+	 }
+	 return head;
+    }
+}
