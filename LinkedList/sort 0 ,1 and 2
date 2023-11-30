@@ -1,0 +1,40 @@
+https://practice.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1
+class Solution
+{
+    //Function to sort a linked list of 0s, 1s and 2s.
+    static Node segregate(Node head)
+    {
+          Node temp=head;
+          Node curr=head;
+          int zero=0;
+          int one=0;
+          int two=0;
+          while(temp!=null){
+              if(temp.data==0){
+                  zero++;
+                  temp=temp.next;
+              }
+              else if(temp.data==1){
+                  one++;
+                  temp=temp.next;
+              }
+              else{
+                  two++;
+                  temp=temp.next;
+              }
+          }
+          while(zero-->0){
+              curr.data=0;
+              curr=curr.next;
+          }
+          while(one-->0){
+              curr.data=1;
+              curr=curr.next;
+          }
+          while(two-->0){
+              curr.data=2;
+              curr=curr.next;
+          }
+          return head;
+    }
+}
