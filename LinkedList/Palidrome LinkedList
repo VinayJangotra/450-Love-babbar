@@ -1,0 +1,66 @@
+//Approach first
+// Brute force Extra data structure used
+https://practice.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1
+class Solution
+{
+    //Function to check whether the list is palindrome.
+    boolean isPalindrome(Node head) 
+    {
+      ArrayList<Integer> list= new ArrayList<>();
+      while(head != null){
+          list.add(head.data);
+          head=head.next;
+      }
+      for(int i=0;i<list.size()/2;i++){
+          if(list.get(i) != list.get(list.size()-i-1)){
+              return false;
+          }
+      }
+     return true;
+    }    
+}
+// In this approach we use the arraylist to check whether the LinkedList is a palidrome or not
+// first we copy all the elements in a ArrayList
+// then we run half of the loop in the ArrayList in which we compare the first and the last elements 
+// If the first and the last elements are not equal at any point then we return the  false else true
+
+--> Second approach
+class Solution
+{
+    static Node reverse(Node head){
+        Node curr=head;
+        Node prev=null;
+        Node nextNode;
+        while(curr!=null){
+            nextNode=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=nextNode;
+        }
+        return prev;
+    }
+    boolean isPalindrome(Node head) 
+    {
+      Node slow=head;
+      Node fast=head;
+      Node temp=head;
+      while(fast!= null && fast.next != null){
+          slow=slow.next;
+          fast=fast.next.next;
+      }
+      Node mid=slow;
+      Node newHead= reverse(slow);
+      while(temp !=null && newHead!=null){
+          if(temp.data != newHead.data){
+              return false;
+          }
+          temp=temp.next;
+          newHead= newHead.next;
+      }
+      return true;
+    }    
+}
+// In this approach we first find the middle element and then reverse the remaining linkedlist after reversing 
+// we compare the first element and the reversed element and
+// if both elements doesnot have the same data then we return false else true
+
